@@ -102,6 +102,7 @@ object SerializedMessageCodec {
     "scala.Enumeration$ValueSet$",
     "scala.collection.immutable.BitSet",
     "scala.collection.immutable.BitSet$BitSet1",
+    "scala.collection.immutable.List$SerializationProxy",
     "java.lang.Float",
     "java.lang.Double",
     "java.lang.Integer",
