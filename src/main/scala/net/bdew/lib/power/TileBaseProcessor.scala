@@ -38,8 +38,14 @@ abstract class TileBaseProcessor
       if (isWorking) {
 
         if ((progress < 1) && (power.stored > cfg.activationEnergy)) {
+          // As much as possible, but not more than to finish the recipe
           val maxConsume = Math.min(
-            Math.max(cfg.powerUseRate * power.stored, cfg.activationEnergy),
+            // Consume at least the activationEnergy
+            Math.max(
+              // Machine gets faster, when more power is stored, maximum is when stored power is full
+              cfg.powerUseRate * Math.min(power.stored, power.capacity),
+              cfg.activationEnergy
+            ),
             cfg.mjPerItem * (1 - progress)
           )
           val consumed = power.extract(maxConsume, false)
